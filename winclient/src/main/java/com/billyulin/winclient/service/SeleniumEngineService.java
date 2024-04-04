@@ -1,6 +1,6 @@
-package com.billyulin.webui.service;
+package com.billyulin.winclient.service;
 
-import com.billyulin.webui.config.SeleniumDriverConfig;
+import com.billyulin.winclient.config.SeleniumDriverConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

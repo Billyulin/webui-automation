@@ -1,4 +1,4 @@
-package com.billyulin.webui.config;
+package com.billyulin.winclient.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -24,5 +24,20 @@ public class SeleniumDriverConfig {
 
     public String getDriverType() {
         return driverType;
+    }
+
+    public void setChromeDriver(String driver) {
+        System.setProperty("webdriver.chrome.driver", driver);
+        chromeDriver = driver;
+    }
+
+    public void setEdgeDriver(String driver) {
+        System.setProperty("webdriver.edge.driver", driver);
+        edgeDriver = driver;
+    }
+
+    public void setDriverType(String type) {
+        System.setProperty("webdriver.type", type);
+        driverType = type;
     }
 }
