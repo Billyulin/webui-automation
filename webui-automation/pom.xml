@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.billyulin</groupId>
-    <artifactId>webui-automation</artifactId>
+    <artifactId>automation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>webui-automation</name>
     <description>webui-automation</description>
