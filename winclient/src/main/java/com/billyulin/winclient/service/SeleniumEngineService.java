@@ -5,13 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class SeleniumEngineService {
+    @Autowired
+    private SeleniumDriverConfig config;
     public void startChrome() {
-        SeleniumDriverConfig config = new SeleniumDriverConfig();
         if (!"chrome".equalsIgnoreCase(config.getDriverType())) {
             return;
         }
@@ -24,11 +26,11 @@ public class SeleniumEngineService {
     }
 
     public void startEdge() {
-        SeleniumDriverConfig config = new SeleniumDriverConfig();
         if ("chrome".equalsIgnoreCase(config.getDriverType())) {
             return;
         }
-//        System.setProperty("webdriver.edge.driver",config.getEdgeDriver());
+        log.info(config.getEdgeDriver());
+        System.setProperty("webdriver.edge.driver",config.getEdgeDriver());
         WebDriver driver = new EdgeDriver();
 
         driver.get("http://www.baidu.com");

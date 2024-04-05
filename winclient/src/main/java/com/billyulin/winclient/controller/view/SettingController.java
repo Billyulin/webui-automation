@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,16 +32,17 @@ public class SettingController implements Initializable {
     private Button saveBtn;
 
     @FXML
-    private Button showBtn;
-
-    @FXML
     void save(ActionEvent event) {
         String type = driverType.getText();
+        saveBtn.setText("正在保存中..");
+        saveBtn.setDisable(true);
         if (Strings.isBlank(type)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(WinclientApplication.getStage());
             alert.setHeaderText("配置项webdriver.type不能为空");
             alert.showAndWait();
+            saveBtn.setText("保存更新");
+            saveBtn.setDisable(false);
             return;
         }
         config.setDriverType(type);
@@ -53,19 +53,15 @@ public class SettingController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("配置保存成功!");
         alert.showAndWait();
+        saveBtn.setText("保存更新");
+        saveBtn.setDisable(false);
     }
-
-    @FXML
-    void show(ActionEvent event) {
-        driverType.setText(config.getDriverType());
-        edgeDriver.setText(config.getEdgeDriver());
-        chromeDriver.setText(config.getChromeDriver());
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         WinclientApplication.controllers.put(this.getClass().getSimpleName(), this);
-
+        driverType.setText(config.getDriverType());
+        edgeDriver.setText(config.getEdgeDriver());
+        chromeDriver.setText(config.getChromeDriver());
     }
 }

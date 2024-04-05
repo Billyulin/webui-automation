@@ -14,9 +14,7 @@
                  AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="执行界面">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="500.0"/>
-                    </content>
+                    <fx:include fx:id="startTab" source="start.fxml"/>
                 </Tab>
                 <Tab text="用例">
                     <content>
